@@ -58,20 +58,44 @@ body {
 }
 
 #clear { 
-    background-color: rgba(255, 60, 0, 0.534);
+    
+    border: 5px solid rgba(255, 60, 0, 0.534);
 }
 
 #equals { 
-    /*border: 2px solid rgba(0, 225, 255, 0.384)*/
-    background-color: rgba(0, 225, 255, 0.301) ;
+    border: 5px solid rgba(0, 225, 255, 0.384);
+    /*background-color: rgba(0, 225, 255, 0.301) ;*/
 }
+
+#equals:hover { 
+    border: 0;
+    background-color: rgba(0, 225, 255, 0.301);
+    color: rgb(206, 206, 206);
+}
+
 
 
 #empty { 
     background-color: rgb(14, 14, 14) ;
-}
-
-#equals, #empty, #clear { 
     border: 0;
 }
 
+#clear:hover { 
+    background-color: rgba(255, 60, 0, 0.534);
+    color: rgb(206, 206, 206);
+    border: 0;
+}
+/*
+#equals, #empty, #clear { 
+    border: 0;
+}
+*/
+
+
+button { 
+    cursor: pointer;
+}
+button:hover { 
+    background-color: rgb(218, 218, 218);
+    color: black;
+}
