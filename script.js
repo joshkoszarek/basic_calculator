@@ -37,6 +37,7 @@ function operate(num1, num2, operator){
 }; 
 // Defines all the buttons
 const clear_btn = document.querySelector("#clear"); 
+const back_btn = document.querySelector("#back"); 
 const percentage_btn = document.querySelector("#percentage"); 
 const division_btn = document.querySelector("#division"); 
 const seven_btn = document.querySelector("#seven"); 
@@ -116,6 +117,18 @@ clear_btn.addEventListener("click", () => {
     display_text.textContent = calculationObject.num1; 
     console.log(calculationObject);
 }); 
+
+back_btn.addEventListener("click", () => { 
+    if (calculationObject.num1 != '' && calculationObject.operator === ''){ 
+        calculationObject.num1 = calculationObject.num1.slice(0,-1); 
+        display_text.textContent = calculationObject.num1; 
+    }
+    else if (calculationObject.num1 != "" && calculationObject.operator != "" && calculationObject.num2 != "" && calculationObject.total === ""){ 
+        calculationObject.num2 = calculationObject.num2.slice(0,-1);
+        display_text.textContent = calculationObject.num2; 
+    }
+    console.log(calculationObject);
+})
 
 
 percentage_btn.addEventListener("click", () => { 
