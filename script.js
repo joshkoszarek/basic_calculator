@@ -438,13 +438,13 @@ decimal_btn.addEventListener("click", () => {
         calculationObject.total = ''; 
     
     }
-    else if (calculationObject.operator === ''){ 
+    else if (calculationObject.operator === '' && !calculationObject.num1.includes('.')){ 
         //console.log('got here');
         calculationObject.num1 += number; 
         display_text.textContent = calculationObject.num1; 
         //console.log(calculationObject); 
     }
-    else { 
+    else if (calculationObject.operator !== '' && !calculationObject.num2.includes('.')){ 
         calculationObject.num2 += number; 
         display_text.textContent = calculationObject.num2; 
         //console.log(calculationObject); 
