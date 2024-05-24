@@ -56,6 +56,13 @@ const zero_btn = document.querySelector("#zero");
 const decimal_btn = document.querySelector("#decimal"); 
 const equals_btn = document.querySelector("#equals"); 
 const display_text = document.querySelector(".current-number-displayed"); 
+
+
+//2 Major Functions 
+
+
+
+
 //Main Calculation Object
 
 let calculationObject = {
@@ -64,6 +71,26 @@ let calculationObject = {
     num2: '', 
     total: '', 
 };
+function numberButtonPressed (button){ 
+    let number = button.textContent; 
+    if (calculationObject.total != ''){ 
+        calculationObject.num1 = number; 
+        display_text.textContent = calculationObject.num1;
+        calculationObject.num2 = ''; 
+        calculationObject.operator = '';
+        calculationObject.total = ''; 
+    
+    }
+    else if (calculationObject.operator === ''){ 
+        calculationObject.num1 += number; 
+        display_text.textContent = calculationObject.num1; 
+    }
+    else { 
+        calculationObject.num2 += number; 
+        display_text.textContent = calculationObject.num2; 
+    }
+    console.log(calculationObject);
+}
 
 
 // Specific event listeners 
@@ -79,7 +106,6 @@ clear_btn.addEventListener("click", () => {
 
 
 percentage_btn.addEventListener("click", () => { 
-    //console.log('hi'); 
     if (calculationObject.total != ''){ 
         let newNum = (Number(calculationObject.total) / 100).toString(); 
         if (newNum.length > 13){ 
@@ -118,7 +144,7 @@ percentage_btn.addEventListener("click", () => {
         display_text.textContent = calculationObject.num2;
     }
 
-   
+    console.log(calculationObject);
 
 })
 division_btn.addEventListener("click", () => { 
@@ -127,90 +153,24 @@ division_btn.addEventListener("click", () => {
         calculationObject.operator = division_btn.textContent; 
         calculationObject.num2 = ''; 
         calculationObject.total = ''; 
-        //console.log(calculationObject);
     }
     else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
-       calculationObject.operator = division_btn.textContent; 
-       //console.log(calculationObject);  
+       calculationObject.operator = division_btn.textContent;  
     }
     console.log(calculationObject);
 })
 
 seven_btn.addEventListener("click", () => { 
-    let number = seven_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(seven_btn); 
 })
 
 eight_btn.addEventListener("click", () => { 
-    //console.log('hi');
-    let number = eight_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(eight_btn); 
 })
 
 
 nine_btn.addEventListener("click", () => { 
-    let number = nine_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(nine_btn); 
 })
 
 multiplication_btn.addEventListener("click", () => { 
@@ -219,90 +179,27 @@ multiplication_btn.addEventListener("click", () => {
         calculationObject.operator = multiplication_btn.textContent; 
         calculationObject.num2 = ''; 
         calculationObject.total = ''; 
-        //console.log(calculationObject);
+     
     }
     else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
        calculationObject.operator = multiplication_btn.textContent; 
-       //console.log(calculationObject);  
+         
     }
     console.log(calculationObject);
 })
 
 
 four_btn.addEventListener("click", () => { 
-    let number = four_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(four_btn); 
 })
 
 
 five_btn.addEventListener("click", () => { 
-    let number = five_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(five_btn); 
 })
 
 six_btn.addEventListener("click", () => { 
-    let number = six_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(six_btn); 
 })
 
 subtraction_btn.addEventListener("click", () => { 
@@ -311,103 +208,40 @@ subtraction_btn.addEventListener("click", () => {
         calculationObject.operator = subtraction_btn.textContent; 
         calculationObject.num2 = ''; 
         calculationObject.total = ''; 
-        //console.log(calculationObject);
+       
     }
     else if(calculationObject.num1 != ''&& calculationObject.num2 === ''){
        calculationObject.operator = subtraction_btn.textContent; 
-       //console.log(calculationObject);  
+         
     }
     console.log(calculationObject);
 })
 
 one_btn.addEventListener("click", () => { 
-    let number = one_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(one_btn); 
 })
 
 two_btn.addEventListener("click", () => { 
-    let number = two_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(two_btn); 
 })
 
 three_btn.addEventListener("click", () => { 
-    let number = three_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(three_btn); 
 })
 
 
 addition_btn.addEventListener("click", () => { 
-    //console.log('hi'); 
+    
     if (calculationObject.total != ''){ 
         calculationObject.num1 = calculationObject.total; 
         calculationObject.operator = addition_btn.textContent; 
         calculationObject.num2 = ''; 
         calculationObject.total = ''; 
-        //console.log(calculationObject);
+        
     }
     else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
        calculationObject.operator = addition_btn.textContent; 
-       //console.log(calculationObject);  
+       
     }
     console.log(calculationObject);
     
@@ -415,15 +249,8 @@ addition_btn.addEventListener("click", () => {
 
 change_sign_btn.addEventListener("click", () => { 
 
-   //console.log(calculationObject);
     if (calculationObject.num1 !== "" && calculationObject.num2 === "" && calculationObject.operator === ""){ 
-        //console.log(Number(calculationObject.num1));
-        //let newNum = Number(calculationObject.num1) * -1; 
-        //console.log(`newNum = ${newNum}`); 
-        //console.log(`type of newNum = ${typeof newNum}`); 
-
         calculationObject.num1 =(Number(calculationObject.num1) * -1).toString(); 
-
         display_text.textContent = calculationObject.num1; 
         
     }
@@ -442,28 +269,7 @@ change_sign_btn.addEventListener("click", () => {
 })
 
 zero_btn.addEventListener("click", () => { 
-    let number = zero_btn.textContent; 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = number; 
-        display_text.textContent = calculationObject.num1;
-        calculationObject.num2 = ''; 
-        calculationObject.operator = '';
-        calculationObject.total = ''; 
-    
-    }
-    else if (calculationObject.operator === ''){ 
-        //console.log('got here');
-        calculationObject.num1 += number; 
-        display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
-    }
-    else { 
-        calculationObject.num2 += number; 
-        display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
-    }
-    console.log(calculationObject);
+    numberButtonPressed(zero_btn); 
 })
 
 decimal_btn.addEventListener("click", () => { 
@@ -477,16 +283,14 @@ decimal_btn.addEventListener("click", () => {
     
     }
     else if (calculationObject.operator === '' && !calculationObject.num1.includes('.')){ 
-        //console.log('got here');
+
         calculationObject.num1 += number; 
         display_text.textContent = calculationObject.num1; 
-        //console.log(calculationObject); 
+ 
     }
     else if (calculationObject.operator !== '' && !calculationObject.num2.includes('.')){ 
         calculationObject.num2 += number; 
         display_text.textContent = calculationObject.num2; 
-        //console.log(calculationObject); 
-        //display content of num2
     }
     console.log(calculationObject);
 })
@@ -498,7 +302,7 @@ equals_btn.addEventListener("click", () => {
         calculationObject.num2 = ''; 
         calculationObject.operator = '';
         calculationObject.total = ''; 
-        console.log(calculationObject);
+        
     }
     else if (calculationObject.num1 != '' && calculationObject.num2 != '' && calculationObject.operator !=''){ 
         calculationObject.total = operate(Number(calculationObject.num1), Number(calculationObject.num2), calculationObject.operator).toString(); 
@@ -509,8 +313,9 @@ equals_btn.addEventListener("click", () => {
         }
         
         display_text.textContent = calculationObject.total; 
-        console.log(calculationObject); 
+        
     }
+    console.log(calculationObject);
 })
 
 
