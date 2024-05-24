@@ -79,7 +79,45 @@ clear_btn.addEventListener("click", () => {
 
 
 percentage_btn.addEventListener("click", () => { 
-    console.log('hi'); 
+    //console.log('hi'); 
+    if (calculationObject.total != ''){ 
+        let newNum = (Number(calculationObject.total) / 100).toString(); 
+        if (newNum.length > 13){ 
+            newNum = (Number(newNum)).toFixed(12);
+            calculationObject.num1 = newNum; 
+        }
+        else { 
+            calculationObject.num1 = newNum; 
+        }
+        display_text.textContent = calculationObject.num1;
+        calculationObject.num2 = ''; 
+        calculationObject.operator = '';
+        calculationObject.total = ''; 
+    
+    }
+    else if (calculationObject.num1 !== "" && calculationObject.operator === ""){ 
+        let newNum = (Number(calculationObject.num1) / 100).toString(); 
+        if (newNum.length > 13){ 
+            newNum = (Number(newNum)).toFixed(12);
+            calculationObject.num1 = newNum; 
+        }
+        else { 
+            calculationObject.num1 = newNum; 
+        }
+        display_text.textContent = calculationObject.num1;
+    }
+    else if (calculationObject.num1 !== "" && calculationObject.operator !== "" && calculationObject.total === ""){ 
+        let newNum = (Number(calculationObject.num2) / 100).toString(); 
+        if (newNum.length > 13){ 
+            newNum = (Number(newNum)).toFixed(12);
+            calculationObject.num2 = newNum; 
+        }
+        else { 
+            calculationObject.num2 = newNum; 
+        }
+        display_text.textContent = calculationObject.num2;
+    }
+
    
 
 })
