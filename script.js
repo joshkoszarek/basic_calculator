@@ -464,6 +464,12 @@ equals_btn.addEventListener("click", () => {
     }
     else if (calculationObject.num1 != '' && calculationObject.num2 != '' && calculationObject.operator !=''){ 
         calculationObject.total = operate(Number(calculationObject.num1), Number(calculationObject.num2), calculationObject.operator).toString(); 
+        if (calculationObject.total.length > 13){ 
+            let numTotal = Number(calculationObject.total); 
+            numTotal = numTotal.toFixed(12); 
+            calculationObject.total = numTotal.toString();
+        }
+        
         display_text.textContent = calculationObject.total; 
         console.log(calculationObject); 
     }
