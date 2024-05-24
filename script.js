@@ -90,19 +90,23 @@ seven_btn.addEventListener("click", () => {
 })
 
 eight_btn.addEventListener("click", () => { 
-    //console.log('hi');
     eight = eight_btn.textContent; 
-    if (calculationObject.operator === ''){ 
-        //console.log('got here');
+    if (calculationObject.total != ''){ 
+        calculationObject.num1 = eight; 
+        display_text.textContent = calculationObject.num1;
+        calculationObject.num2 = ''; 
+        calculationObject.operator = '';
+        calculationObject.total = ''; 
+    
+    }
+    else if (calculationObject.operator === ''){ 
         calculationObject.num1 += eight; 
         display_text.textContent = calculationObject.num1; 
-        console.log(calculationObject); 
+  
     }
     else { 
         calculationObject.num2 += eight; 
         display_text.textContent = calculationObject.num2; 
-        console.log(calculationObject); 
-        //display content of num2
     }
 })
 /*
@@ -148,8 +152,14 @@ three_btn.addEventListener("click", () => {
 
 addition_btn.addEventListener("click", () => { 
     //console.log('hi'); 
-    
-    if(calculationObject.num1 != ''){
+    if (calculationObject.total != ''){ 
+        calculationObject.num1 = calculationObject.total; 
+        calculationObject.operator = addition_btn.textContent; 
+        calculationObject.num2 = ''; 
+        calculationObject.total = ''; 
+        console.log(calculationObject);
+    }
+    else if(calculationObject.num1 != ''){
        calculationObject.operator = addition_btn.textContent; 
        console.log(calculationObject);  
     }
