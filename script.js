@@ -429,7 +429,15 @@ decimal_btn.addEventListener("click", () => {
 })
 
 equals_btn.addEventListener("click", () => { 
-    if (calculationObject.num1 != '' && calculationObject.num2 != '' && calculationObject.operator !=''){ 
+    if (calculationObject.operator === '/' && calculationObject.num2 === '0'){ 
+        display_text.textContent = "undefined"
+        calculationObject.num1 = '';
+        calculationObject.num2 = ''; 
+        calculationObject.operator = '';
+        calculationObject.total = ''; 
+        console.log(calculationObject);
+    }
+    else if (calculationObject.num1 != '' && calculationObject.num2 != '' && calculationObject.operator !=''){ 
         calculationObject.total = operate(Number(calculationObject.num1), Number(calculationObject.num2), calculationObject.operator).toString(); 
         display_text.textContent = calculationObject.total; 
         console.log(calculationObject); 
