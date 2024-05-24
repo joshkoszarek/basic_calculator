@@ -13,14 +13,14 @@ body {
 
 .main-container { 
     height: 650px;
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(14, 14, 14);
     padding: 10px;
     width: 450px;
     border-radius: 20px;
 }
 .display-container { 
     height: 80px;
-    background-color: rgb(15, 15, 15);
+    background-color: rgb(8, 8, 8);
     margin-bottom: 20px;
     border-radius: 20px;
     display: flex;  
@@ -52,7 +52,8 @@ body {
     font-size: 25px;
     font-weight: 800;
     border: 0;
-    background-color: rgb(49, 49, 49);
+    background-color: rgb(14, 14, 14);
+    border: 2px solid rgb(20, 20, 20);
     color: rgb(206, 206, 206);
 }
 
@@ -65,7 +66,12 @@ body {
     background-color: rgba(0, 225, 255, 0.301) ;
 }
 
+
 #empty { 
-    background-color: rgb(22, 22, 22); ;
+    background-color: rgb(14, 14, 14) ;
+}
+
+#equals, #empty, #clear { 
+    border: 0;
 }
 
