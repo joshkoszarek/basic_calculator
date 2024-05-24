@@ -80,6 +80,8 @@ clear_btn.addEventListener("click", () => {
 
 percentage_btn.addEventListener("click", () => { 
     console.log('hi'); 
+   
+
 })
 division_btn.addEventListener("click", () => { 
     if (calculationObject.total != ''){ 
@@ -375,7 +377,30 @@ addition_btn.addEventListener("click", () => {
 
 change_sign_btn.addEventListener("click", () => { 
 
-    console.log(calculationObject);
+   //console.log(calculationObject);
+    if (calculationObject.num1 !== "" && calculationObject.num2 === "" && calculationObject.operator === ""){ 
+        //console.log(Number(calculationObject.num1));
+        //let newNum = Number(calculationObject.num1) * -1; 
+        //console.log(`newNum = ${newNum}`); 
+        //console.log(`type of newNum = ${typeof newNum}`); 
+
+        calculationObject.num1 =(Number(calculationObject.num1) * -1).toString(); 
+
+        display_text.textContent = calculationObject.num1; 
+        
+    }
+    else if (calculationObject.num1 !== "" && calculationObject.num2 !== "" && calculationObject.operator !== "" && calculationObject.total === ""){ 
+        calculationObject.num2 =(Number(calculationObject.num2) * -1).toString(); 
+        display_text.textContent = calculationObject.num2; 
+    }
+    else if (calculationObject.total !== ""){ 
+        calculationObject.num1 = (Number(calculationObject.total) * -1).toString();
+        display_text.textContent = calculationObject.num1; 
+        calculationObject.num2 = ""; 
+        calculationObject.operator = ""; 
+        calculationObject.total = "";
+    }
+    console.log(calculationObject); 
 })
 
 zero_btn.addEventListener("click", () => { 
