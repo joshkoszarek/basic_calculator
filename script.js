@@ -71,7 +71,7 @@ let calculationObject = {
     num2: '', 
     total: '', 
 };
-function numberButtonPressed (button){ 
+function numberButtonPressed (button){ //Updates object's num1 or num2 property and displays results
     let number = button.textContent; 
     if (calculationObject.total != ''){ 
         calculationObject.num1 = number; 
@@ -92,6 +92,19 @@ function numberButtonPressed (button){
     console.log(calculationObject);
 }
 
+function operatorButtonPressed(button){ // Updates object's operator property (*,/,+,-)
+    let operator = button.textContent;
+    if (calculationObject.total != ''){ 
+        calculationObject.num1 = calculationObject.total; 
+        calculationObject.operator = operator; 
+        calculationObject.num2 = ''; 
+        calculationObject.total = ''; 
+    }
+    else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
+       calculationObject.operator = operator;  
+    }
+    console.log(calculationObject);
+}
 
 // Specific event listeners 
 
@@ -148,16 +161,7 @@ percentage_btn.addEventListener("click", () => {
 
 })
 division_btn.addEventListener("click", () => { 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = calculationObject.total; 
-        calculationObject.operator = division_btn.textContent; 
-        calculationObject.num2 = ''; 
-        calculationObject.total = ''; 
-    }
-    else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
-       calculationObject.operator = division_btn.textContent;  
-    }
-    console.log(calculationObject);
+    operatorButtonPressed(division_btn);
 })
 
 seven_btn.addEventListener("click", () => { 
@@ -174,18 +178,7 @@ nine_btn.addEventListener("click", () => {
 })
 
 multiplication_btn.addEventListener("click", () => { 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = calculationObject.total; 
-        calculationObject.operator = multiplication_btn.textContent; 
-        calculationObject.num2 = ''; 
-        calculationObject.total = ''; 
-     
-    }
-    else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
-       calculationObject.operator = multiplication_btn.textContent; 
-         
-    }
-    console.log(calculationObject);
+    operatorButtonPressed(multiplication_btn);
 })
 
 
@@ -203,18 +196,7 @@ six_btn.addEventListener("click", () => {
 })
 
 subtraction_btn.addEventListener("click", () => { 
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = calculationObject.total; 
-        calculationObject.operator = subtraction_btn.textContent; 
-        calculationObject.num2 = ''; 
-        calculationObject.total = ''; 
-       
-    }
-    else if(calculationObject.num1 != ''&& calculationObject.num2 === ''){
-       calculationObject.operator = subtraction_btn.textContent; 
-         
-    }
-    console.log(calculationObject);
+    operatorButtonPressed(subtraction_btn);
 })
 
 one_btn.addEventListener("click", () => { 
@@ -231,20 +213,7 @@ three_btn.addEventListener("click", () => {
 
 
 addition_btn.addEventListener("click", () => { 
-    
-    if (calculationObject.total != ''){ 
-        calculationObject.num1 = calculationObject.total; 
-        calculationObject.operator = addition_btn.textContent; 
-        calculationObject.num2 = ''; 
-        calculationObject.total = ''; 
-        
-    }
-    else if(calculationObject.num1 != '' && calculationObject.num2 === ''){
-       calculationObject.operator = addition_btn.textContent; 
-       
-    }
-    console.log(calculationObject);
-    
+    operatorButtonPressed(addition_btn);
 })
 
 change_sign_btn.addEventListener("click", () => { 
