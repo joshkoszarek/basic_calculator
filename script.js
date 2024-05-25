@@ -112,14 +112,16 @@ function operatorButtonPressed(button){ // Updates object's operator property (*
 // Rounding Function to Fix Any Spill on Calculation 
 /*
 still need to handle scientific notation and when rounding with a 9 
-
+//Only major bug that remains is dealing with very large or small numbers that overflow
+the screen. Essentially, on large numbers, it rounds wrong to fit the screen and instead should
+convert to scientific notation. On very long decimal points, it unreliably converts to scientific notation. 
 */
 function roundToFit(numString){ 
-    let roundedNum = numString.slice(0,15); 
+    let roundedNum = numString.slice(0,14); 
     arrayOfNums = roundedNum.split(''); 
     console.log(arrayOfNums);
-    if (Number(arrayOfNums[14]) >= 5  && Number(arrayOfNums[14]) !== 9 ){ 
-        arrayOfNums[13] = (Number(arrayOfNums[13]) + 1).toString();
+    if (Number(arrayOfNums[13]) >= 5  && Number(arrayOfNums[13]) !== 9 ){ 
+        arrayOfNums[12] = (Number(arrayOfNums[12]) + 1).toString();
         console.log(arrayOfNums);
     } 
     roundedNum = arrayOfNums.join(""); 
