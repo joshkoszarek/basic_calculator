@@ -141,13 +141,18 @@ clear_btn.addEventListener("click", () => {
 }); 
 
 back_btn.addEventListener("click", () => { 
+    
     if (calculationObject.num1 != '' && calculationObject.operator === ''){ 
-        calculationObject.num1 = calculationObject.num1.slice(0,-1); 
-        display_text.textContent = calculationObject.num1; 
+        if(!(calculationObject.num1.split('').includes('e'))){
+            calculationObject.num1 = calculationObject.num1.slice(0,-1); 
+            display_text.textContent = calculationObject.num1; 
+        }
     }
     else if (calculationObject.num1 != "" && calculationObject.operator != "" && calculationObject.num2 != "" && calculationObject.total === ""){ 
-        calculationObject.num2 = calculationObject.num2.slice(0,-1);
-        display_text.textContent = calculationObject.num2; 
+        if(!(calculationObject.num2.split('').includes('e'))){
+            calculationObject.num2 = calculationObject.num2.slice(0,-1);
+            display_text.textContent = calculationObject.num2;
+        } 
     }
     console.log(calculationObject);
 })
