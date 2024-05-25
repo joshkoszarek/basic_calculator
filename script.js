@@ -59,8 +59,6 @@ const equals_btn = document.querySelector("#equals");
 const display_text = document.querySelector(".current-number-displayed"); 
 
 
-//2 Major Functions 
-
 
 
 
@@ -72,6 +70,10 @@ let calculationObject = {
     num2: '', 
     total: '', 
 };
+
+
+//2 Major Functions 
+
 function numberButtonPressed (button){ //Updates object's num1 or num2 property and displays results
     let number = button.textContent; 
     if (calculationObject.total != ''){ 
@@ -107,6 +109,23 @@ function operatorButtonPressed(button){ // Updates object's operator property (*
     console.log(calculationObject);
 }
 
+// Rounding Function to Fix Any Spill on Calculation 
+/*
+still need to handle scientific notation and when rounding with a 9 
+
+*/
+function roundToFit(numString){ 
+    let roundedNum = numString.slice(0,15); 
+    arrayOfNums = roundedNum.split(''); 
+    console.log(arrayOfNums);
+    if (Number(arrayOfNums[14]) >= 5  && Number(arrayOfNums[14]) !== 9 ){ 
+        arrayOfNums[13] = (Number(arrayOfNums[13]) + 1).toString();
+        console.log(arrayOfNums);
+    } 
+    roundedNum = arrayOfNums.join(""); 
+    return roundedNum.slice(0, -1); 
+}
+
 // Specific event listeners 
 
 clear_btn.addEventListener("click", () => { 
@@ -134,9 +153,10 @@ back_btn.addEventListener("click", () => {
 percentage_btn.addEventListener("click", () => { 
     if (calculationObject.total != ''){ 
         let newNum = (Number(calculationObject.total) / 100).toString(); 
-        if (newNum.length > 13){ 
-            newNum = (Number(newNum)).toFixed(12);
-            calculationObject.num1 = newNum; 
+        if (newNum.length > 14){ 
+            console.log('called round'); 
+            console.log(`num1 = ${newNum}`);
+            calculationObject.num1 = roundToFit(newNum);
         }
         else { 
             calculationObject.num1 = newNum; 
@@ -149,9 +169,11 @@ percentage_btn.addEventListener("click", () => {
     }
     else if (calculationObject.num1 !== "" && calculationObject.operator === ""){ 
         let newNum = (Number(calculationObject.num1) / 100).toString(); 
-        if (newNum.length > 13){ 
-            newNum = (Number(newNum)).toFixed(12);
-            calculationObject.num1 = newNum; 
+        if (newNum.length > 14){ 
+            console.log('called round'); 
+            console.log(`num1 = ${newNum}`);
+            calculationObject.num1 = roundToFit(newNum);
+
         }
         else { 
             calculationObject.num1 = newNum; 
@@ -161,8 +183,8 @@ percentage_btn.addEventListener("click", () => {
     else if (calculationObject.num1 !== "" && calculationObject.operator !== "" && calculationObject.total === ""){ 
         let newNum = (Number(calculationObject.num2) / 100).toString(); 
         if (newNum.length > 13){ 
-            newNum = (Number(newNum)).toFixed(12);
-            calculationObject.num2 = newNum; 
+            calculationObject.num2 = roundToFit(newNum);
+          
         }
         else { 
             calculationObject.num2 = newNum; 
@@ -288,10 +310,12 @@ equals_btn.addEventListener("click", () => {
     }
     else if (calculationObject.num1 != '' && calculationObject.num2 != '' && calculationObject.operator !=''){ 
         calculationObject.total = operate(Number(calculationObject.num1), Number(calculationObject.num2), calculationObject.operator).toString(); 
-        if (calculationObject.total.length > 13){ 
-            let numTotal = Number(calculationObject.total); 
-            numTotal = numTotal.toFixed(12); 
-            calculationObject.total = numTotal.toString();
+        if (calculationObject.total.length > 14){ 
+            //calculationObject.total = calculationObject.total.slice(0,13);
+            //let numTotal = Number(calculationObject.total); 
+            //numTotal = numTotal.toFixed(12); 
+            //calculationObject.total = numTotal.toString();
+            calculationObject.total = roundToFit(calculationObject.total);
         }
         
         display_text.textContent = calculationObject.total; 
